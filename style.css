@@ -1,0 +1,19 @@
+body {
+    margin: 20px;
+  }
+  
+  .header {
+    color : #0e525d;
+    text-align: center;
+  }
+  
+  input {
+    text-align: left;
+    padding-right: 40px;
+    white-space: nowrap;
+  }
+  
+  .uploadOptions{
+      display: inline-flex;
+      position: relative;
+  }

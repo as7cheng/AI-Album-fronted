@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+  <script type="text/javascript" src="lib/url-template/url-template.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+  <script type="text/javascript" src="apigClient.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.863.0.js"></script>
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <div class ="container" style="width: 720px;">
+    <div id="app"></div>
+    <div class="header">
+      <h1>Voice Controlled Photo Album</h1>
+    </div>
+    <br><br><br>
+    
+    <div class="input-group">
+      <input type="text" id="searchText" class="form-control" placeholder="i.e. Show me dogs">
+      <span class="input-group-btn">
+          <button class="btn btn-info" type="submit" onclick="search()">Search</button>
+      </span>
+    </div>
+    <br>
+
+    <div class="input-group">
+      <span class="input-group-btn">
+        <textarea id="output" readonly="readonly" placeholder="Click To Speech" style="height: 45px; width: 460px;"></textarea>
+        <button class="btn btn-info" onclick="runSpeechRecognition()" style="margin-bottom: 40px;">Speech to Text</button>
+        <button class="btn btn-info" onclick="moveContent()" style="margin-bottom: 40px;">Clear All</button>
+      </span>
+    </div>
+
+    <br><br><br>
+    <div class="container">
+      <div class="header">
+        <h3>Upload Photos</h3>
+      </div>
+      <br><br>
+      
+      <div class="uploadOptions">
+        <input type="file" name="file_path" id="file_path" class="form-control-file">
+        <input type="text" name="label" id="label" placeholder="Enter your customed labels here" class="form-control">
+        <button class="btn btn-info" type="submit" onclick="addPhoto()">UPLOAD</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <p id ="uploadText"></p >
+      <div class="banner-section" id="img-container">
+        <p id="displaytext"></p >
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
