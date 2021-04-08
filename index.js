@@ -58,9 +58,15 @@ function search() {
         "q": image_message,
     };
 
+    var additionalParams = {
+            headers: {
+                "x-api-key":"Dtqs8Uf4g47F7qaZwFCfu4em9YoETkrK7ELC6CZ5"
+            }
+    }
+
     console.log(params);
 
-    apigClient.searchGet(params, {}, {}).then(function (result) {
+    apigClient.searchGet(params, {}, additionalParams).then(function (result) {
             console.log("i'm in")
             response_data = result.data;
             console.log(response_data);
@@ -103,9 +109,10 @@ function getBase64(file) {
 
 function addPhoto(albumName) {
     var files = document.getElementById('file_path').files;
-    var customLabels = document.getElementById('label').value;
+    var label = document.getElementById('label').value;
     console.log(files);
-    console.log(customLabels);
+    console.log(label);
+    console.log(typeof(label));
     var file = files[0];
     console.log(file)
     var fileName = file.name;
@@ -118,7 +125,7 @@ function addPhoto(albumName) {
             Bucket: albumBucketName,
             Key: photoKey,
             Body: file,
-            MetaData: customLabels
+            Metadata: {customLabels: label}
         }
     });
 
